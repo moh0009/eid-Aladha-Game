@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhradf5pcnh4g"]
+
+[ext_resource type="Script" path="res://ui/main.gd" id="1_fh31p"]
+[ext_resource type="Texture2D" uid="uid://dcp4n77rvaik4" path="res://kenney_background-elements-redux/Backgrounds/backgroundColorFall.png" id="2_t7ei1"]
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fh31p")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -7.0
+offset_right = 1159.0
+offset_bottom = 1017.0
+texture = ExtResource("2_t7ei1")
+flip_v = true
+
+[node name="start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 284.0
+offset_top = 217.0
+offset_right = 828.0
+offset_bottom = 341.0
+theme_override_colors/font_color = Color(0.0653025, 0.794104, 0.850983, 1)
+theme_override_font_sizes/font_size = 50
+text = "إبدأ رحلتك"
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 282.0
+offset_top = 376.0
+offset_right = 824.0
+offset_bottom = 487.0
+theme_override_colors/font_color = Color(0.230992, 0.757867, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "أخرج"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 16.0
+offset_right = 782.0
+offset_bottom = 143.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "العيد!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

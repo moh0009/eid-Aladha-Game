@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://biewcv8fre6ll"]
+
+[ext_resource type="Texture2D" uid="uid://beapambxqk87t" path="res://SPRITES/portel.png" id="1_p3hb5"]
+[ext_resource type="Script" path="res://scenes/qs/scripts/portel.gd" id="1_rqsd2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_guwlb"]
+size = Vector2(16, 32)
+
+[node name="portel" type="Node2D"]
+script = ExtResource("1_rqsd2")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture_filter = 1
+texture = ExtResource("1_p3hb5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_guwlb")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

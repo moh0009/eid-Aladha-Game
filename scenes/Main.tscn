@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://cmns5njm64yyu"]
+
+[ext_resource type="Script" path="res://scenes/Main.gd" id="1_b4lkd"]
+[ext_resource type="PackedScene" uid="uid://cq6d11anxps0q" path="res://scenes/world.tscn" id="2_5ltqa"]
+[ext_resource type="Texture2D" uid="uid://hx327tt6ra3n" path="res://kenney_background-elements-redux/Backgrounds/backgroundColorGrass.png" id="2_r31qw"]
+[ext_resource type="PackedScene" uid="uid://3m4efr6um2ia" path="res://scenes/playert.tscn" id="3_37vq1"]
+[ext_resource type="PackedScene" uid="uid://0hh27tdh2kja" path="res://scenes/qs/qs_1.tscn" id="5_er0ka"]
+[ext_resource type="PackedScene" uid="uid://cxyak5qck8kfi" path="res://scenes/qs/qs_2.tscn" id="6_eyh2w"]
+[ext_resource type="PackedScene" uid="uid://dnfiknbk0slph" path="res://scenes/qs/qs_3.tscn" id="7_mtwhk"]
+[ext_resource type="PackedScene" uid="uid://biewcv8fre6ll" path="res://scenes/qs/portel.tscn" id="8_vr26p"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_b4lkd")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer13" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer13"]
+position = Vector2(286, -200)
+scale = Vector2(0.822526, 0.822526)
+texture = ExtResource("2_r31qw")
+offset = Vector2(55.1725, 696.552)
+
+[node name="world" parent="." instance=ExtResource("2_5ltqa")]
+
+[node name="qs1" parent="." instance=ExtResource("5_er0ka")]
+position = Vector2(393, 419)
+scale = Vector2(1.7, 1.7)
+
+[node name="qs2" parent="." instance=ExtResource("6_eyh2w")]
+position = Vector2(1293, 417)
+scale = Vector2(1.7, 1.7)
+texts = [&"بعد صلاة العيد نأتي بالذبيحة", &"ثم نذبحها !!", &"لإرضاء الله عزوجل", &"أنظر لهذا الخروف", &"سوف نذبحه الآن!!", &"أنظر هناك ", &"هذا الخروف هناك ذبحناه"]
+
+[node name="qs3" parent="." instance=ExtResource("7_mtwhk")]
+position = Vector2(1592, 595)
+scale = Vector2(1.7, 1.7)
+
+[node name="player" parent="." instance=ExtResource("3_37vq1")]
+position = Vector2(29, 398)
+
+[node name="portel" parent="." instance=ExtResource("8_vr26p")]
+position = Vector2(2920, 546)
+scale = Vector2(1.96, 1.96)

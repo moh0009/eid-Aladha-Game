@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://cxyak5qck8kfi"]
+
+[ext_resource type="Script" path="res://scenes/qs/scripts/qs_1.gd" id="1_y7lhe"]
+[ext_resource type="PackedScene" uid="uid://c47eyj2n7ihua" path="res://ui/main_ui.tscn" id="3_2cu8s"]
+
+[sub_resource type="Animation" id="Animation_eu5mj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0v5kq"]
+resource_name = "idle"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7t8yi"]
+_data = {
+"RESET": SubResource("Animation_eu5mj"),
+"idle": SubResource("Animation_0v5kq")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wkypn"]
+size = Vector2(13, 31)
+
+[node name="qs2" type="Node2D" node_paths=PackedStringArray("ca", "anim")]
+script = ExtResource("1_y7lhe")
+ca = NodePath("CanvasLayer")
+anim = NodePath("Area2D/Sprite2D/AnimationPlayer")
+texts = [&"hi the best"]
+img = "res://SPRITES/butcher-Sheet.png"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture_filter = 1
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7t8yi")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_wkypn")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_2cu8s")]
+visible = false
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

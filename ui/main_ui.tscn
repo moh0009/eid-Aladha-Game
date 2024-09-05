@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://c47eyj2n7ihua"]
+
+[ext_resource type="Script" path="res://ui/main_ui.gd" id="1_7j0h4"]
+[ext_resource type="Texture2D" uid="uid://cxc4ngcp34d1c" path="res://SPRITES/THE ARAB MAN-Sheet.png" id="2_7gsjk"]
+
+[sub_resource type="Animation" id="Animation_jdit2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_law4v"]
+resource_name = "idle"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pjam4"]
+_data = {
+"RESET": SubResource("Animation_jdit2"),
+"idle": SubResource("Animation_law4v")
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_7j0h4")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 101.0
+offset_top = 423.0
+offset_right = 1065.0
+offset_bottom = 618.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 1021.0
+offset_bottom = 183.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="next" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "التالي"
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/VBoxContainer"]
+texture_filter = 1
+position = Vector2(500, 162.395)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_7gsjk")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/VBoxContainer/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_pjam4")
+}
+
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/next" to="." method="_on_next_pressed"]
